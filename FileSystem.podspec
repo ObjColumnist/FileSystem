@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
-  s.tvos.deployment_target = '8.0'
+  s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
   
   s.name     = 'FileSystem'
@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.author   = { "Spencer MacDonald" => "spencer.macdonald@gmail.com" }
   s.license  = { :type => 'BSD (3-clause)', :file => 'LICENSE' }
   s.source   = { :git => 'https://github.com/ObjColumnist/FileSystem.git', :tag => "0.1" }
-  s.source_files = 'FileSystem/Source/*.swift'
+  s.source_files = 'Source/*.swift'
   s.requires_arc = true
 end
