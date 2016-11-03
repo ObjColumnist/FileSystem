@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct RegularFile: File {
+public struct RegularFile: File, FileHandleConvertible, FileWrapperConvertible {
     public var path: Path
     
     public init?(path: Path) {

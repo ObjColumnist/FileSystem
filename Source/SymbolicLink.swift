@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SymbolicLink: File {
+public struct SymbolicLink: File, FileWrapperConvertible {
     public var path: Path
     
     public init?(path: Path) {

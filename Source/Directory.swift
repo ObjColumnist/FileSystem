@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable {
+public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, SymbolicLinkable, FileWrapperConvertible {
     public var path: Path
     
     public init?(path: Path) {
@@ -49,6 +49,51 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
     public static var caches: Directory {
         let cachesUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
         return Directory(Path(cachesUrl))
+    }
+    
+    public static var application: Directory {
+        let applicationUrl = FileManager.default.urls(for: .applicationDirectory, in: .userDomainMask).first!
+        return Directory(Path(applicationUrl))
+    }
+    
+    public static var applicationSupport: Directory {
+        let applicationSupportUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        return Directory(Path(applicationSupportUrl))
+    }
+  
+    public static var desktop: Directory {
+        let desktopUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+        return Directory(Path(desktopUrl))
+    }
+    
+    public static var downloads: Directory {
+        let downloadsUrl = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        return Directory(Path(downloadsUrl))
+    }
+    
+    public static var movies: Directory {
+        let moviesUrl = FileManager.default.urls(for: .moviesDirectory, in: .userDomainMask).first!
+        return Directory(Path(moviesUrl))
+    }
+  
+    public static var music: Directory {
+        let musicUrl = FileManager.default.urls(for: .moviesDirectory, in: .userDomainMask).first!
+        return Directory(Path(musicUrl))
+    }
+    
+    public static var pictures: Directory {
+        let picturesUrl = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
+        return Directory(Path(picturesUrl))
+    }
+    
+    public static var applications: [Directory] {
+        let applicationUrls = FileManager.default.urls(for: .allApplicationsDirectory, in: .userDomainMask)
+        return applicationUrls.map( { Directory(Path($0)) } )
+    }
+    
+    public static var libraries: [Directory] {
+        let libraryUrls = FileManager.default.urls(for: .allLibrariesDirectory, in: .userDomainMask)
+        return libraryUrls.map( { Directory(Path($0)) } )
     }
     
     public static func create(at path: Path, withIntermediateDirectories: Bool = false) throws -> Directory {

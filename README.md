@@ -26,6 +26,8 @@ The main Types in `FileSystem` are listed below with _protocols being emphasised
 - _Trashable_
 - _Linkable_
 - _SymbolicLinkable_
+- _FileHandleConvertible_
+- _FileWrapperConvertible_
 - _Item_
 - _File_
 - RegularFile
@@ -152,7 +154,7 @@ public func attributes() throws -> [FileAttributeKey: Any]
 public func setAttributes(_ attributes: [FileAttributeKey: Any]) throws
 ```
 
- ### Parent
+### Parent
 
 `Parent` `protocol` for an `Item` that can be a parent of another `Item`.
 
@@ -174,7 +176,6 @@ The `Subitem` `protocol` provides APIs to access its root volume and parent dire
 func rootVolume() throws -> Volume
 func parentDirectory() throws -> Directory?
 ```
-
 
 ### Copyable
 
@@ -248,6 +249,23 @@ func link(to path: Path) throws
 func symbolicLink(to path: Path) throws -> SymbolicLink
 ```
 
+### FileHandleConvertible
+
+`FileHandleConvertible` `protocol` for an `Item` that can be converted into a `FileHandle` for reading, writing or updating (both reading and writing).
+
+```swift
+func fileHandleForReading() throws -> FileHandle
+func fileHandleForWriting() throws -> FileHandle
+func fileHandleForUpdating() throws -> FileHandle
+```
+
+### FileWrapperConvertible
+
+`FileWrapperConvertible` `protocol` for an `Item` that can be converted into a `FileWrapper`.
+
+```swift
+func fileWrapper() throws -> FileWrapper
+```
 ### File
 
 `File` is the base `protocol` for a single file and adopts `Item`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `Linkable` and `SymbolicLinkable`.
@@ -262,7 +280,7 @@ public func isContentEqual(to file: Self) -> Bool
 
 ### RegularFile
 
-`RegularFile` is a `struct` that adopts the `File` `protocol` and is used to represent a regular file i.e. not a symlink or alias.
+`RegularFile` is a `struct` that adopts `File`, `FileHandleConvertible` and `FileWrapperConvertible`, and is used to represent a regular file i.e. not a symlink or alias.
 
 `RegularFile` has an API to create a file at a `Path`:
 
@@ -272,7 +290,7 @@ static public func create(at path: Path) throws -> RegularFile
 
 ### SymbolicLink
 
-`SymbolicLink` is a `struct` that adopts the `File` `protocol` and is used to represent a symbolic link.
+`SymbolicLink` is a `struct` that adopts `File` and `FileWrapperConvertible`, and is used to represent a symbolic link.
 
 `SymbolicLink` includes an API to retrieve its destination:
 
@@ -292,7 +310,7 @@ public func destination() throws -> Item
 
 ### Directory
 
-`Directory` is a `struct` that adopts `Item`, `Parent`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `Linkable` and`SymbolicLinkable`
+`Directory` is a `struct` that adopts `Item`, `Parent`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `SymbolicLinkable` and `FileWrapperConvertible`.
 
 `Directory` has APIs to access system directories:
 
@@ -301,6 +319,15 @@ public static var temporary: Directory
 public static var document: Directory    
 public static var library: Directory
 public static var caches: Directory
+public static var application: Directory
+public static var applicationSupport: Directory
+public static var desktop: Directory
+public static var downloads: Directory
+public static var movies: Directory
+public static var music: Directory
+public static var pictures: Directory
+public static var applications: [Directory]
+public static var libraries: [Directory]
 ```
 
 `Directory` has an API to access its relationship to another `Item`:
@@ -309,7 +336,7 @@ public static var caches: Directory
 public func relationship(to item: Item) throws -> FileManager.URLRelationship
 ```
 
-In addition to an API for creating a `Directory` at a `Path:
+In addition to an API for creating a `Directory` at a `Path`:
 
 ```swift
 static public func create(at path: Path, withIntermediateDirectories: Bool = false) throws -> Directory

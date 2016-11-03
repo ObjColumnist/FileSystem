@@ -91,7 +91,6 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
     }
 }
 
-
 #if os(macOS)
 extension Volume {
     public func unmountAndEject() throws {
