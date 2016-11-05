@@ -1,5 +1,5 @@
 //
-//  Alias.swift
+//  AliasFile.swift
 //  FileSystem
 //
 //  Created by Spencer MacDonald on 21/10/2016.
@@ -8,9 +8,15 @@
 
 import Foundation
 
-public struct Alias: File {
+/// `AliasFile` is a `struct` that is used to represent an alias.
+public struct AliasFile: File {
     public var path: Path
     
+    /// Creates a `AliasFile` instance with the specified path.
+    ///
+    /// - parameter path: The path for the alias file.
+    ///
+    /// - returns: A new `AliasFile` instance or nil if the `AliasFile` does not exist at the specified path.
     public init?(path: Path) {
         do {
             let resourceValues = try path.url.resourceValues(forKeys: [.isAliasFileKey])
@@ -26,13 +32,23 @@ public struct Alias: File {
         }
     }
     
+    /// Creates a `AliasFile` instance with the specified path.
+    ///
+    /// - parameter path: The path for the alias file.
+    ///
+    /// - returns: A new `AliasFile` instance.
     public init(_ path: Path) {
         self.path = path
     }
     
-    public func destination() throws -> Item {
+    /// Returns an `Aliasable` destination if `path` is a valid alias, otherise throws an `Error`.
+    ///
+    /// - throws: a `URLError`.
+    ///
+    /// - returns: An `Aliasable`.
+    public func destination() throws -> Aliasable {
         let destinationURL = try NSURL(resolvingAliasFileAt: self.path.url, options: []) as URL
-        if let destination = Path(destinationURL).item {
+        if let destination = Path(destinationURL).item as? Aliasable {
             return destination
         } else {
             throw URLError(.fileDoesNotExist)

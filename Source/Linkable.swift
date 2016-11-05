@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Linkable` `protocol` for an `Item` that can be hard linked to a `Path`.
 public protocol Linkable: Item {
     func link(to path: Path) throws
 }

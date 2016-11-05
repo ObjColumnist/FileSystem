@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Renameable` `protocol` for an `Item` that can be renamed.
 public protocol Renameable: Item {
     mutating func rename(to name: String) throws
 }

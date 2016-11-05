@@ -8,18 +8,11 @@
 
 import Foundation
 
-public protocol File: Item, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable {}
+/// `File` is the base `protocol` for a single file.
+public protocol File: Item, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable, Aliasable {}
 
 extension File {
-    public func contents() throws -> Data? {
-        return FileManager.default.contents(atPath: path.rawValue)
-    }
-    
-    public func size() throws -> Int {
-        let values = try path.url.resourceValues(forKeys: [.fileSizeKey])
-        return values.fileSize!
-    }
-    
+    /// Returns wether the contents of 2 files are easy
     public func isContentEqual(to file: Self) -> Bool {
         return FileManager.default.contentsEqual(atPath: path.rawValue, andPath: file.path.rawValue)
     }

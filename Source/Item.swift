@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Item` is the base `protocol` for all file system items that can be represented by `Path`.
 public protocol Item: PathRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
     var path: Path { get set }
     

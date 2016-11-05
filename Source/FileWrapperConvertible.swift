@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `FileWrapperConvertible` `protocol` for an `Item` that can be converted into a `FileWrapper`.
 public protocol FileWrapperConvertible: Item {
     func fileWrapper() throws -> FileWrapper
 }

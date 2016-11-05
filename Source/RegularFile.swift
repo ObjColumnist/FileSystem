@@ -8,9 +8,15 @@
 
 import Foundation
 
-public struct RegularFile: File, FileHandleConvertible, FileWrapperConvertible {
+/// `RegularFile` is a `struct` that is used to represent a regular file i.e. not a symlink or alias.
+public struct RegularFile: File, Aliasable, FileHandleConvertible, FileWrapperConvertible {
     public var path: Path
     
+    /// Creates a `RegularFile` instance with the specified path.
+    ///
+    /// - parameter path: The path for the regular file.
+    ///
+    /// - returns: A new `RegularFile` instance or nil if the `RegularFile` does not exist at the specified path.
     public init?(path: Path) {
         do {
             let resourceValues = try path.url.resourceValues(forKeys: [.isRegularFileKey])
@@ -26,15 +32,18 @@ public struct RegularFile: File, FileHandleConvertible, FileWrapperConvertible {
         }
     }
     
+    /// Creates a `RegularFile` instance with the specified path.
+    ///
+    /// - parameter path: The path for the regular file.
+    ///
+    /// - returns: A new `RegularFile` instance.
     public init(_ path: Path) {
         self.path = path
     }
     
-    public static func create(at path: Path) throws -> RegularFile {
-        if FileManager.default.createFile(atPath: path.rawValue, contents: nil, attributes: nil) {
-            return RegularFile(path)
-        } else {
-            throw URLError(.cannotCreateFile)
-        }
+    /// Returns the contents of the file in bytes
+    public func size() throws -> Int {
+        let values = try path.url.resourceValues(forKeys: [.fileSizeKey])
+        return values.fileSize!
     }
 }

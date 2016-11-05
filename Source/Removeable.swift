@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Renameable` `protocol` for an `Item` that can be removed, *note that the item is removed instantly*.
 public protocol Removeable: Item {
     func remove() throws
 }

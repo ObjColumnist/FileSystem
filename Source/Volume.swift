@@ -12,9 +12,15 @@ import Foundation
 import Cocoa
 #endif
 
+/// `Volume` is a `struct` that is used to represent a volume.
 public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
     public var path: Path
     
+    /// Creates a `Volume` instance with the specified path.
+    ///
+    /// - parameter path: The path for the volume.
+    ///
+    /// - returns: A new `Volume` instance or nil if the `Volume` does not exist at the specified path.
     public init?(path: Path) {
         do {
             let resourceValues = try path.url.resourceValues(forKeys: [.isVolumeKey])
@@ -30,10 +36,16 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
         }
     }
     
+    /// Creates a `Volume` instance with the specified path.
+    ///
+    /// - parameter path: The path for the volume.
+    ///
+    /// - returns: A new `Volume` instance.
     public init(_ path: Path) {
         self.path = path
     }
     
+    /// Returns mounted volumes
     public static var mounted: [Volume] {        
         guard let volumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [], options: []), volumeURLs.isEmpty == false else {
             return []

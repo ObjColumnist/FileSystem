@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `CopyableSubitem` `protocol` for an `Item` that adopts `Copyable` and `Subitem`.
 public protocol CopyableSubitem: Copyable, Subitem {
     func copy(into parent: Parent) throws -> Self
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Trashable` `protocol` for an `Item` that can be trashed, on macOS the Item is moved to the Trash on iOS, tvOS and watchOS this is equivalent to the `Removeable` `protocol`.
 public protocol Trashable: Item {
     mutating func trash() throws
 }

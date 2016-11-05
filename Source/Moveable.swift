@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Moveable` `protocol` for an `Item` that can be moved to another `Path`.
 public protocol Moveable: Item {
     mutating func move(to path: Path) throws
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `MoveableSubitem` `protocol` for an `Item` that adopts `Moveable` and `Subitem`.
 public protocol MoveableSubitem: Moveable, Subitem {
     mutating func move(into parent: Parent) throws
 }

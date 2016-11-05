@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		098204B01DC7EBD100BB2950 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* Alias.swift */; };
-		098204B11DC7EBD100BB2950 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* Alias.swift */; };
-		098204B21DC7EBD100BB2950 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* Alias.swift */; };
-		098204B31DC7EBD100BB2950 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* Alias.swift */; };
+		098204B01DC7EBD100BB2950 /* AliasFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* AliasFile.swift */; };
+		098204B11DC7EBD100BB2950 /* AliasFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* AliasFile.swift */; };
+		098204B21DC7EBD100BB2950 /* AliasFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* AliasFile.swift */; };
+		098204B31DC7EBD100BB2950 /* AliasFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049B1DC7EBD100BB2950 /* AliasFile.swift */; };
 		098204B41DC7EBD100BB2950 /* Subitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049C1DC7EBD100BB2950 /* Subitem.swift */; };
 		098204B51DC7EBD100BB2950 /* Subitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049C1DC7EBD100BB2950 /* Subitem.swift */; };
 		098204B61DC7EBD100BB2950 /* Subitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982049C1DC7EBD100BB2950 /* Subitem.swift */; };
@@ -99,6 +99,10 @@
 		962D34EE1DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D34EC1DCB36E500A6D749 /* FileHandleConvertible.swift */; };
 		962D34EF1DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D34EC1DCB36E500A6D749 /* FileHandleConvertible.swift */; };
 		962D34F01DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D34EC1DCB36E500A6D749 /* FileHandleConvertible.swift */; };
+		9683E5AB1DCD34E7006C4351 /* Aliasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683E5AA1DCD34E7006C4351 /* Aliasable.swift */; };
+		9683E5AC1DCD34E7006C4351 /* Aliasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683E5AA1DCD34E7006C4351 /* Aliasable.swift */; };
+		9683E5AD1DCD34E7006C4351 /* Aliasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683E5AA1DCD34E7006C4351 /* Aliasable.swift */; };
+		9683E5AE1DCD34E7006C4351 /* Aliasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683E5AA1DCD34E7006C4351 /* Aliasable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +114,7 @@
 		098204101DC545E300BB2950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0982041A1DC545F900BB2950 /* FileSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FileSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0982041D1DC545F900BB2950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0982049B1DC7EBD100BB2950 /* Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
+		0982049B1DC7EBD100BB2950 /* AliasFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliasFile.swift; sourceTree = "<group>"; };
 		0982049C1DC7EBD100BB2950 /* Subitem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subitem.swift; sourceTree = "<group>"; };
 		0982049D1DC7EBD100BB2950 /* Copyable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
 		0982049E1DC7EBD100BB2950 /* CopyableSubitem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyableSubitem.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		098205061DC7EC3700BB2950 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		962D34E71DCA721600A6D749 /* FileWrapperConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWrapperConvertible.swift; sourceTree = "<group>"; };
 		962D34EC1DCB36E500A6D749 /* FileHandleConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandleConvertible.swift; sourceTree = "<group>"; };
+		9683E5AA1DCD34E7006C4351 /* Aliasable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aliasable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,12 +257,13 @@
 				098204AE1DC7EBD100BB2950 /* Trashable.swift */,
 				098204A31DC7EBD100BB2950 /* Linkable.swift */,
 				098204AD1DC7EBD100BB2950 /* SymbolicLinkable.swift */,
+				9683E5AA1DCD34E7006C4351 /* Aliasable.swift */,
 				962D34EC1DCB36E500A6D749 /* FileHandleConvertible.swift */,
 				962D34E71DCA721600A6D749 /* FileWrapperConvertible.swift */,
 				098204A01DC7EBD100BB2950 /* File.swift */,
 				098204A91DC7EBD100BB2950 /* RegularFile.swift */,
 				098204AC1DC7EBD100BB2950 /* SymbolicLink.swift */,
-				0982049B1DC7EBD100BB2950 /* Alias.swift */,
+				0982049B1DC7EBD100BB2950 /* AliasFile.swift */,
 				0982049F1DC7EBD100BB2950 /* Directory.swift */,
 				098204AF1DC7EBD100BB2950 /* Volume.swift */,
 			);
@@ -473,6 +479,7 @@
 				098204C41DC7EBD100BB2950 /* File.swift in Sources */,
 				098204FC1DC7EBD100BB2950 /* Trashable.swift in Sources */,
 				098204E41DC7EBD100BB2950 /* PathRepresentable.swift in Sources */,
+				9683E5AB1DCD34E7006C4351 /* Aliasable.swift in Sources */,
 				098204BC1DC7EBD100BB2950 /* CopyableSubitem.swift in Sources */,
 				098204F81DC7EBD100BB2950 /* SymbolicLinkable.swift in Sources */,
 				098204EC1DC7EBD100BB2950 /* Removeable.swift in Sources */,
@@ -482,7 +489,7 @@
 				098204F01DC7EBD100BB2950 /* Renameable.swift in Sources */,
 				098204B81DC7EBD100BB2950 /* Copyable.swift in Sources */,
 				098204CC1DC7EBD100BB2950 /* Item.swift in Sources */,
-				098204B01DC7EBD100BB2950 /* Alias.swift in Sources */,
+				098204B01DC7EBD100BB2950 /* AliasFile.swift in Sources */,
 				098204C01DC7EBD100BB2950 /* Directory.swift in Sources */,
 				098205001DC7EBD100BB2950 /* Volume.swift in Sources */,
 				962D34ED1DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */,
@@ -502,6 +509,7 @@
 				098204C51DC7EBD100BB2950 /* File.swift in Sources */,
 				098204FD1DC7EBD100BB2950 /* Trashable.swift in Sources */,
 				098204E51DC7EBD100BB2950 /* PathRepresentable.swift in Sources */,
+				9683E5AC1DCD34E7006C4351 /* Aliasable.swift in Sources */,
 				098204BD1DC7EBD100BB2950 /* CopyableSubitem.swift in Sources */,
 				098204F91DC7EBD100BB2950 /* SymbolicLinkable.swift in Sources */,
 				098204ED1DC7EBD100BB2950 /* Removeable.swift in Sources */,
@@ -511,7 +519,7 @@
 				098204F11DC7EBD100BB2950 /* Renameable.swift in Sources */,
 				098204B91DC7EBD100BB2950 /* Copyable.swift in Sources */,
 				098204CD1DC7EBD100BB2950 /* Item.swift in Sources */,
-				098204B11DC7EBD100BB2950 /* Alias.swift in Sources */,
+				098204B11DC7EBD100BB2950 /* AliasFile.swift in Sources */,
 				098204C11DC7EBD100BB2950 /* Directory.swift in Sources */,
 				098205011DC7EBD100BB2950 /* Volume.swift in Sources */,
 				962D34EE1DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */,
@@ -531,6 +539,7 @@
 				098204C61DC7EBD100BB2950 /* File.swift in Sources */,
 				098204FE1DC7EBD100BB2950 /* Trashable.swift in Sources */,
 				098204E61DC7EBD100BB2950 /* PathRepresentable.swift in Sources */,
+				9683E5AD1DCD34E7006C4351 /* Aliasable.swift in Sources */,
 				098204BE1DC7EBD100BB2950 /* CopyableSubitem.swift in Sources */,
 				098204FA1DC7EBD100BB2950 /* SymbolicLinkable.swift in Sources */,
 				098204EE1DC7EBD100BB2950 /* Removeable.swift in Sources */,
@@ -540,7 +549,7 @@
 				098204F21DC7EBD100BB2950 /* Renameable.swift in Sources */,
 				098204BA1DC7EBD100BB2950 /* Copyable.swift in Sources */,
 				098204CE1DC7EBD100BB2950 /* Item.swift in Sources */,
-				098204B21DC7EBD100BB2950 /* Alias.swift in Sources */,
+				098204B21DC7EBD100BB2950 /* AliasFile.swift in Sources */,
 				098204C21DC7EBD100BB2950 /* Directory.swift in Sources */,
 				098205021DC7EBD100BB2950 /* Volume.swift in Sources */,
 				962D34EF1DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */,
@@ -560,6 +569,7 @@
 				098204C71DC7EBD100BB2950 /* File.swift in Sources */,
 				098204FF1DC7EBD100BB2950 /* Trashable.swift in Sources */,
 				098204E71DC7EBD100BB2950 /* PathRepresentable.swift in Sources */,
+				9683E5AE1DCD34E7006C4351 /* Aliasable.swift in Sources */,
 				098204BF1DC7EBD100BB2950 /* CopyableSubitem.swift in Sources */,
 				098204FB1DC7EBD100BB2950 /* SymbolicLinkable.swift in Sources */,
 				098204EF1DC7EBD100BB2950 /* Removeable.swift in Sources */,
@@ -569,7 +579,7 @@
 				098204F31DC7EBD100BB2950 /* Renameable.swift in Sources */,
 				098204BB1DC7EBD100BB2950 /* Copyable.swift in Sources */,
 				098204CF1DC7EBD100BB2950 /* Item.swift in Sources */,
-				098204B31DC7EBD100BB2950 /* Alias.swift in Sources */,
+				098204B31DC7EBD100BB2950 /* AliasFile.swift in Sources */,
 				098204C31DC7EBD100BB2950 /* Directory.swift in Sources */,
 				098205031DC7EBD100BB2950 /* Volume.swift in Sources */,
 				962D34F01DCB36E500A6D749 /* FileHandleConvertible.swift in Sources */,

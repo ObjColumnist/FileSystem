@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Copyable` `protocol` for an `Item` that can be a copied.
 public protocol Copyable: Item {
     func copy(to path: Path) throws -> Self
 }

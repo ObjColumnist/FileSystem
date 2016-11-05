@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `PathRepresentable` can be adopted by anything that can be represented by a `Path`.
 public protocol PathRepresentable {
     var path: Path { get }
     

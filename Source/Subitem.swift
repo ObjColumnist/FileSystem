@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Subitem` `protocol` for an `Item` that can be a subitem of another `Item`.
 public protocol Subitem: Item {
     func rootVolume() throws -> Volume
     func parentDirectory() throws -> Directory?

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `Parent` `protocol` for an `Item` that can be a parent of another `Item`.
 public protocol Parent: Item {
     func subitems() throws -> [Subitem]
     func isEmpty() throws -> Bool
@@ -15,6 +16,7 @@ public protocol Parent: Item {
 }
 
 extension Parent {
+    /// Returns subitems
     public func subitems() throws -> [Subitem] {
         var items: [Subitem] = []
         
@@ -33,10 +35,12 @@ extension Parent {
         return items
     }
     
+    /// Returns wether self has 0 subitems
     public func isEmpty() throws -> Bool {
         return try subitems().isEmpty
     }
     
+    /// Returns wether self contains subitem
     public func contains(_ subitem: Subitem) throws -> Bool {
         return try subitems().contains(where: { $0.path == subitem.path })
     }

@@ -26,13 +26,14 @@ The main Types in `FileSystem` are listed below with _protocols being emphasised
 - _Trashable_
 - _Linkable_
 - _SymbolicLinkable_
+- _Aliasable_
 - _FileHandleConvertible_
 - _FileWrapperConvertible_
 - _Item_
 - _File_
 - RegularFile
 - SymbolicLink
-- Alias
+- AliasFile
 - Directory
 - Volume
 
@@ -249,6 +250,10 @@ func link(to path: Path) throws
 func symbolicLink(to path: Path) throws -> SymbolicLink
 ```
 
+### Aliasable
+
+`Aliasable` `protocol` for an `Item` that can be aliased.
+
 ### FileHandleConvertible
 
 `FileHandleConvertible` `protocol` for an `Item` that can be converted into a `FileHandle` for reading, writing or updating (both reading and writing).
@@ -268,13 +273,11 @@ func fileWrapper() throws -> FileWrapper
 ```
 ### File
 
-`File` is the base `protocol` for a single file and adopts `Item`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `Linkable` and `SymbolicLinkable`.
+`File` is the base `protocol` for a single file and adopts `Item`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `Linkable`, `SymbolicLinkable` and `Aliasable`.
 
 `File` has the following APIs:
 
 ```swift
-public func contents() throws -> Data?
-public func size() throws -> Int
 public func isContentEqual(to file: Self) -> Bool
 ```
 
@@ -282,10 +285,9 @@ public func isContentEqual(to file: Self) -> Bool
 
 `RegularFile` is a `struct` that adopts `File`, `FileHandleConvertible` and `FileWrapperConvertible`, and is used to represent a regular file i.e. not a symlink or alias.
 
-`RegularFile` has an API to create a file at a `Path`:
-
+`RegularFile` has the following API:
 ```swift
-static public func create(at path: Path) throws -> RegularFile
+public func size() throws -> Int
 ```
 
 ### SymbolicLink
@@ -298,19 +300,19 @@ static public func create(at path: Path) throws -> RegularFile
 public func destination() throws -> SymbolicLinkable
 ```
 
-### Alias
+### AliasFile
 
-`Alias` is a `struct` that adopts the `File` `protocol` and is used to represent an alias.
+`AliasFile` is a `struct` that adopts the `File` `protocol` and is used to represent an alias file.
 
-`Alias` includes an API to retrieve its destination:
+`AliasFile` includes an API to retrieve its destination:
 
 ```swift
-public func destination() throws -> Item
+public func destination() throws -> Aliasable
 ```
 
 ### Directory
 
-`Directory` is a `struct` that adopts `Item`, `Parent`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `SymbolicLinkable` and `FileWrapperConvertible`.
+`Directory` is a `struct` that adopts `Item`, `Parent`, `Subitem`, `Copyable`, `CopyableSubitem`, `Moveable`, `MoveableSubitem`, `Renameable`, `Removeable`, `Trashable`, `SymbolicLinkable`, `Aliasable` and `FileWrapperConvertible`.
 
 `Directory` has APIs to access system directories:
 

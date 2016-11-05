@@ -8,70 +8,108 @@
 
 import Foundation
 
+/// Path represents a file system location on disk.
 public struct Path: Equatable, RawRepresentable {
     public typealias RawValue = String
     
+    /// String representation of the path
     public let rawValue: RawValue
+    /// URL representation of the path
     public let url: URL
 
+    /// Creates a `Path` instance with the specified raw value.
+    ///
+    /// - parameter rawValue: The raw string value for the path.
+    ///
+    /// - returns: A new path instance.
     public init?(rawValue: RawValue) {
         self.rawValue = rawValue
         self.url = URL(fileURLWithPath: rawValue)
     }
     
+    /// Creates a `Path` instance with the specified raw value.
+    ///
+    /// - parameter rawValue: The raw string value for the path.
+    ///
+    /// - returns: A new path instance.
     public init(_ rawValue: String) {
         self.rawValue = rawValue
         self.url = URL(fileURLWithPath: rawValue)
     }
     
+    /// Creates a `Path` instance with the specified components.
+    ///
+    /// - parameter components: The components for the path.
+    ///
+    /// - returns: A new path instance.
     public init(components: [String]) {
         let fileURL = NSURL.fileURL(withPathComponents: components)! as URL
         self.init(fileURL)
     }
     
+    /// Creates a `Path` instance with the specified components.
+    ///
+    /// - parameter url: The url for the path.
+    ///
+    /// - returns: A new path instance.
     public init(_ url: URL) {
         self.rawValue = url.path
         self.url = url
     }
     
+    /// Returns the path extension
     public var `extension`: String {
         return url.pathExtension
     }
     
+    /// Returns the path components
     public var components: [String] {
         return url.pathComponents
     }
     
+    /// Returns the last path component
     public var lastComponent: String {
         return url.lastPathComponent
     }
     
+    /// Returns an array of localized path components
     public var componentsToDisplay: [String] {
         return FileManager.default.componentsToDisplay(forPath: rawValue) ?? []
     }
     
+    /// Returns wether a Item exists at self
     public var exists: Bool {
         return FileManager.default.fileExists(atPath: rawValue)
     }
     
+    /// Returns Path with any symlinks resolved
     public var resolved: Path {
         return Path(url.resolvingSymlinksInPath())
     }
     
+    /// Return Standardized Path
     public var standardized: Path {
         return Path(url.standardizedFileURL)
     }
     
+    /// Returns a Path constructed by appending the given path component to self.
+    ///
+    /// - note: This function performs a file system operation to determine if the path component is a directory. If so, it will append a trailing `/`.
+    /// - parameter component: The path component to add.
     public func appendingComponent(_ component: String) -> Path {
         let url = self.url.appendingPathComponent(component)
         return Path(url)
     }
     
+    /// Returns a Path constructed by removing the last path component of self.
     public func deletingLastComponent() -> Path {
         let url = self.url.deletingLastPathComponent()
         return Path(url)
     }
     
+    /// Returns a Path constructed by replacing the last path component of self.
+    ///
+    /// - parameter component: The path component to used to replace the current last path component.
     public func replacingLastComponent(with component: String) -> Path {
         var pathComponents = components
         pathComponents.removeLast()
@@ -111,20 +149,21 @@ extension Path: ExpressibleByStringLiteral {
 }
 
 extension Path {
+    /// Returns the item located at self or nil if one does not exist.
     public var item: Item? {
         do {
             let resourceValues = try url.resourceValues(forKeys: [.isDirectoryKey, .isVolumeKey, .isSymbolicLinkKey, .isAliasFileKey, .isRegularFileKey])
             
             if let isVolume = resourceValues.isVolume, isVolume {
-                return Volume(path: self)
+                return Volume(self)
             } else if let isDirectory = resourceValues.isDirectory, isDirectory {
-                return Directory(path: self)
+                return Directory(self)
             } else if let isSymbolicLink = resourceValues.isSymbolicLink, isSymbolicLink {
-                return SymbolicLink(path: self)
+                return SymbolicLink(self)
             } else if let isAliasFile = resourceValues.isAliasFile, isAliasFile {
-                return Alias(path: self)
+                return AliasFile(self)
             } else if let isRegularFile = resourceValues.isRegularFile, isRegularFile {
-                return RegularFile(path: self)
+                return RegularFile(self)
             } else {
                 return nil
             }

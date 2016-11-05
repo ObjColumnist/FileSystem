@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `SymbolicLinkable` `protocol` for an `Item` that can be symbolic linked to a `Path`.
 public protocol SymbolicLinkable: Item {
     func symbolicLink(to path: Path) throws -> SymbolicLink
 }
