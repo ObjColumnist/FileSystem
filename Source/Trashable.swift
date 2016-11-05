@@ -8,21 +8,21 @@
 
 import Foundation
 
-/// `Trashable` `protocol` for an `Item` that can be trashed, on macOS the Item is moved to the Trash on iOS, tvOS and watchOS this is equivalent to the `Removeable` `protocol`.
+/// `Trashable` `protocol` for an `Item` that can be trashed on macOS.
+@available(macOS 10.10, *)
 public protocol Trashable: Item {
+    #if os(macOS)
     mutating func trash() throws
+    #endif
 }
 
+@available(macOS 10.10, *)
 extension Trashable {
     #if os(macOS)
     mutating public func trash() throws {
         var resultingURL: NSURL?
         try FileManager.default.trashItem(at: path.url, resultingItemURL: &resultingURL)
         self.path = Path(resultingURL as! URL)
-    }
-    #elseif os(iOS) || os(watchOS) || os(tvOS)
-    mutating public func trash() throws {
-        try FileManager.default.removeItem(at: path.url)
     }
     #endif
 }

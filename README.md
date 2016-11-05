@@ -145,7 +145,7 @@ public func isExecutable() throws -> Bool
 public func isHidden() throws -> Bool
 public func isPackage() throws -> Bool
 public func isApplication() throws -> Bool
-public func isAlias() throws -> Bool
+public func isAliasFile() throws -> Bool
 public func isSymbolicLink() throws -> Bool
 public func creationDate() throws -> Date
 public func contentAccessDate() throws -> Date
@@ -228,7 +228,9 @@ mutating func rename(to name: String) throws
 
 ### Trashable
 
-`Trashable` `protocol` for an `Item` that can be trashed, on macOS the Item is moved to the Trash on iOS, tvOS and watchOS this is equivalent to the `Removeable` `protocol`.
+`Trashable` `protocol` for an `Item` that can be trashed.
+
+On macOS the protocol has has the following APIs:
 
 ```swift
 mutating func trash() throws
@@ -373,8 +375,8 @@ public func isLocal() throws -> Bool
 public func isReadOnly() throws -> Bool
 ```
 
-On macOS you can also unmount and eject the `Volume`:
+On macOS you can also unmount the `Volume`:
 
 ```swift
-public func unmountAndEject() throws
+public func unmount(withOptions options: FileManager.UnmountOptions = [], completionHandler: @escaping (Error?) -> Void)
 ```
