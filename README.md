@@ -344,6 +344,12 @@ In addition to an API for creating a `Directory` at a `Path`:
 static public func create(at path: Path, withIntermediateDirectories: Bool = false) throws -> Directory
 ```
 
+There is also an API for returning container directories:
+
+```swift
+public static func container(forSecurityApplicationGroupIdentifier groupIdentifier: String) -> Directory?
+```
+
 ### Volume
 
 `Volume` is a `struct` that adopts `Item`, `Parent`, `Renameable`, `Linkable` and `SymbolicLinkable`.

@@ -133,6 +133,20 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
         return Directory(path)
     }
     
+    /// Returns the container directory associated with the specified security application group identifier.
+    ///
+    /// - note: This function also creates the directory if it does not yet exist.
+    ///
+    /// - parameter groupIdentifier: the security application group identifier.
+    ///
+    /// - returns: A container `Directory` or nil if the container is not valid.
+    public static func container(forSecurityApplicationGroupIdentifier groupIdentifier: String) -> Directory? {
+        guard let containerUrl = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) else {
+            return nil
+        }
+        return Directory(Path(containerUrl))
+    }
+    
     public func relationship(to item: Item) throws -> FileManager.URLRelationship {
         var urlRelationship: FileManager.URLRelationship = .other
         try FileManager.default.getRelationship(&urlRelationship, ofDirectoryAt: path.url, toItemAt: item.path.url)
