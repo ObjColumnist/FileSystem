@@ -14,6 +14,11 @@ public protocol Moveable: Item {
 }
 
 extension Moveable {
+    /// Move the `Item` to the specified `Path`.
+    ///
+    /// - parameter path: The path to move the item too.
+    ///
+    /// - throws: An `Error`.
     mutating public func move(to path: Path) throws {
         try FileManager.default.moveItem(at: self.path.url, to: path.url)
         self.path = path

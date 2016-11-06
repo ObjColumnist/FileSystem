@@ -14,6 +14,11 @@ public protocol Renameable: Item {
 }
 
 extension Renameable {
+    /// Rename the `Item` to the specified name.
+    ///
+    /// - parameter name: The new name of the item.
+    ///
+    /// - throws: An `Error`.
     mutating public func rename(to name: String) throws {
         try FileManager.default.moveItem(at: path.url, to: path.replacingLastComponent(with: name).url)
         self.path = path

@@ -14,6 +14,13 @@ public protocol SymbolicLinkable: Item {
 }
 
 extension SymbolicLinkable {
+    /// Returns a `SymbolicLink` created at the specified `Path`.
+    ///
+    /// - parameter path: The path to create thw symbolic link at.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: The created `SymbolicLink`.
     public func symbolicLink(to path: Path) throws -> SymbolicLink {
         try FileManager.default.createSymbolicLink(at: self.path.url, withDestinationURL: path.url)
         return SymbolicLink(path)

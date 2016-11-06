@@ -14,6 +14,11 @@ public protocol FileWrapperConvertible: Item {
 }
 
 extension FileWrapperConvertible {
+    /// Returns a `FileWrapper` for the `Item`.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: A `FileWrapper`
     public func fileWrapper() throws -> FileWrapper {
         return try FileWrapper(url: path.url, options: [])
     }

@@ -230,7 +230,7 @@ mutating func rename(to name: String) throws
 
 `Trashable` `protocol` for an `Item` that can be trashed.
 
-On macOS the protocol has has the following APIs:
+On macOS the `protocol` has has the following APIs:
 
 ```swift
 mutating func trash() throws
@@ -241,7 +241,7 @@ mutating func trash() throws
 `Linkable` `protocol` for an `Item` that can be hard linked to a `Path`.
 
 ```swift
-func link(to path: Path) throws
+func link(to path: Path) throws -> Linkable
 ```
 
 ### SymbolicLinkable
@@ -258,7 +258,7 @@ func symbolicLink(to path: Path) throws -> SymbolicLink
 
 ### FileHandleConvertible
 
-`FileHandleConvertible` `protocol` for an `Item` that can be converted into a `FileHandle` for reading, writing or updating (both reading and writing).
+`FileHandleConvertible` `protocol` for an `Item` that can be converted into a `FileHandle` for either reading, writing or updating (both reading and writing).
 
 ```swift
 func fileHandleForReading() throws -> FileHandle
@@ -343,7 +343,7 @@ public func relationship(to item: Item) throws -> FileManager.URLRelationship
 In addition to an API for creating a `Directory` at a `Path`:
 
 ```swift
-static public func create(at path: Path, withIntermediateDirectories: Bool = false) throws -> Directory
+static public func create(at path: Path, withIntermediateDirectories: Bool = false, attributes: [String : Any]? = nil) throws -> Directory
 ```
 
 There is also an API for returning container directories:

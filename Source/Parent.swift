@@ -16,7 +16,11 @@ public protocol Parent: Item {
 }
 
 extension Parent {
-    /// Returns subitems
+    /// Returns the subitems of the parent
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: All subitems contained in the parent.
     public func subitems() throws -> [Subitem] {
         var items: [Subitem] = []
         
@@ -35,12 +39,22 @@ extension Parent {
         return items
     }
     
-    /// Returns wether self has 0 subitems
+    /// Returns wether the parent has 0 subitems.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: A boolean to indicate if the parent is empty,
     public func isEmpty() throws -> Bool {
         return try subitems().isEmpty
     }
     
-    /// Returns wether self contains subitem
+    /// Returns wether the parent contains the specified subitem.
+    ///
+    /// - parameter subitem: The submitem to check against.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: A boolean to indicate if the parent contains the specified subitem.
     public func contains(_ subitem: Subitem) throws -> Bool {
         return try subitems().contains(where: { $0.path == subitem.path })
     }

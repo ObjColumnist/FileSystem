@@ -17,13 +17,13 @@ public protocol Item: PathRepresentable, CustomStringConvertible, CustomDebugStr
 
 extension Item /* CustomStringConvertible*/ {
     public var description: String {
-        return "\(type(of: self)) \(path.rawValue)"
+        return path.description
     }
 }
 
 extension Item /* CustomDebugStringConvertible */ {
     public var debugDescription: String {
-        return description
+        return "\(type(of: self)) \(path.rawValue)"
     }
 }
 
@@ -116,7 +116,7 @@ extension Item {
     ///
     /// - note: This function does not transverse symbolic links.
     ///
-    /// - throws: An `Error`
+    /// - throws: An `Error`.
     ///
     /// - returns: attibutes
     public func attributes() throws -> [FileAttributeKey: Any]  {
@@ -127,7 +127,7 @@ extension Item {
     ///
     /// - parameter attributes: The attributes to set on the item.
     ///
-    /// - throws: An `Error`
+    /// - throws: An `Error`.
     public func setAttributes(_ attributes: [FileAttributeKey: Any]) throws {
         return try FileManager.default.setAttributes(attributes, ofItemAtPath: path.rawValue)
     }

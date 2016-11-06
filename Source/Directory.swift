@@ -124,11 +124,12 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
     ///
     /// - parameter path: The path to create a directory at.
     /// - parameter withIntermediateDirectories: Passing `true` for withIntermediateDirectories will create any necessary intermediate directories.
+    /// - parameter attributes: The file attributes for the new directory. You can set the owner and group numbers, file permissions, and modification date.  If you specify nil for this parameter, the directory is created according to the umask(2) macOS Developer Tools Manual Page of the process.
     ///
-    /// - throws: An `Error`
+    /// - throws: An `Error`.
     ///
     /// - returns: A `Directory` or throws an `Error`.
-    public static func create(at path: Path, withIntermediateDirectories: Bool = false) throws -> Directory {
+    public static func create(at path: Path, withIntermediateDirectories: Bool = false, attributes: [String: Any]? = nil) throws -> Directory {
         try FileManager.default.createDirectory(at: path.url, withIntermediateDirectories: withIntermediateDirectories, attributes: nil)
         return Directory(path)
     }
@@ -147,15 +148,7 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
         return Directory(Path(containerUrl))
     }
     
-    public func relationship(to item: Item) throws -> FileManager.URLRelationship {
-        var urlRelationship: FileManager.URLRelationship = .other
-        try FileManager.default.getRelationship(&urlRelationship, ofDirectoryAt: path.url, toItemAt: item.path.url)
-        return urlRelationship
-    }
-}
-
-#if os(macOS)
-extension Directory {
+    #if os(macOS)
     /// Returns the home `Directory` for the current user.
     ///
     /// - returns: A `Directory`.
@@ -164,7 +157,7 @@ extension Directory {
         let url = FileManager.default.homeDirectoryForCurrentUser
         return Directory(Path(url))
     }
-
+    
     /// Returns the home `Directory` for the specified user.
     ///
     /// - parameter user: The user for the home directory.
@@ -177,5 +170,18 @@ extension Directory {
         }
         return Directory(Path(url))
     }
+    #endif
+    
+    /// Returns the `FileManager.URLRelationship` compared to another item.
+    ///
+    /// - parameter item: The item to compare too.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: A `FileManager.URLRelationship`.
+    public func relationship(to item: Item) throws -> FileManager.URLRelationship {
+        var urlRelationship: FileManager.URLRelationship = .other
+        try FileManager.default.getRelationship(&urlRelationship, ofDirectoryAt: path.url, toItemAt: item.path.url)
+        return urlRelationship
+    }
 }
-#endif

@@ -14,6 +14,11 @@ public protocol MoveableSubitem: Moveable, Subitem {
 }
 
 extension MoveableSubitem {
+    /// Move the `Item` into the specified `Parent`.
+    ///
+    /// - parameter parent: The parent to move the item into.
+    ///
+    /// - throws: An `Error`.
     mutating public func move(into parent: Parent) throws {
         let movePath = parent.path.appendingComponent(path.lastComponent)
         try move(to: movePath)

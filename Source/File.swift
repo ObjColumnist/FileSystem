@@ -12,7 +12,7 @@ import Foundation
 public protocol File: Item, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable, Aliasable {}
 
 extension File {
-    /// Returns wether the contents of 2 files are easy
+    /// Returns wether the contents of the files are equal.
     public func isContentEqual(to file: Self) -> Bool {
         return FileManager.default.contentsEqual(atPath: path.rawValue, andPath: file.path.rawValue)
     }

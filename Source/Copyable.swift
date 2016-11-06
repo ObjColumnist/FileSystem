@@ -14,6 +14,13 @@ public protocol Copyable: Item {
 }
 
 extension Copyable {
+    /// Returns a copy of the `Item` at the specified `Path`.
+    ///
+    /// - parameter path: The path to copy the item too.
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: A copy of the item.
     public func copy(to path: Path) throws -> Self {
         try FileManager.default.copyItem(at: self.path.url, to: path.url)
         return path.item! as! Self

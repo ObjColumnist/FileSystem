@@ -8,12 +8,15 @@
 
 import Foundation
 
-/// `Renameable` `protocol` for an `Item` that can be removed, *note that the item is removed instantly*.
+/// `Renameable` `protocol` for an `Item` that can be removed,..
 public protocol Removeable: Item {
     func remove() throws
 }
 
 extension Removeable {
+    /// Remove the `Item`.
+    ///
+    /// - note: This function removes the item instantly.
     public func remove() throws {
         try FileManager.default.removeItem(at: path.url)
     }

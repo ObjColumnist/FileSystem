@@ -19,6 +19,7 @@ public protocol Trashable: Item {
 @available(macOS 10.10, *)
 extension Trashable {
     #if os(macOS)
+    /// Trash the `Item`.
     mutating public func trash() throws {
         var resultingURL: NSURL?
         try FileManager.default.trashItem(at: path.url, resultingItemURL: &resultingURL)

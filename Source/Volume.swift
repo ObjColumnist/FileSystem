@@ -57,6 +57,17 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
         return volumes
     }
     
+    #if os(macOS)
+    /// Unmounts the volume
+    ///
+    /// - parameter options: An array of `FileManager.UnmountOptions` used to unmount the volume.
+    /// - parameter completionHandler: The completion handler will be executed when the operation is complete, error will be nil the volume was unmounted.
+    @available(macOS 10.11, *)
+    public func unmount(withOptions options: FileManager.UnmountOptions = [], completionHandler: @escaping (Error?) -> Void) {
+        FileManager.default.unmountVolume(at: path.url, options: options, completionHandler: completionHandler)
+    }
+    #endif
+    
     /// Returns if total capacity of the volume in bytes.
     public func totalCapacity() throws -> Int {
         let values = try path.url.resourceValues(forKeys: [.volumeTotalCapacityKey])
@@ -106,16 +117,3 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
         return values.volumeIsReadOnly!
     }
 }
-
-#if os(macOS)
-extension Volume {
-    /// Unmounts the volume
-    ///
-    /// - parameter options: An array of `FileManager.UnmountOptions` used to unmount the volume.
-    /// - parameter completionHandler: The completion handler will be executed when the operation is complete, error will be nil the volume was unmounted.
-    @available(macOS 10.11, *)
-    public func unmount(withOptions options: FileManager.UnmountOptions = [], completionHandler: @escaping (Error?) -> Void) {
-        FileManager.default.unmountVolume(at: path.url, options: options, completionHandler: completionHandler)
-    }
-}
-#endif
