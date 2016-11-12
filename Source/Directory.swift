@@ -36,7 +36,7 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
     ///
     /// - parameter path: The path for the directory.
     ///
-    /// - returns: A new `Directory` instance
+    /// - returns: A new `Directory` instance.
     public init(_ path: Path) {
         self.path = path
     }

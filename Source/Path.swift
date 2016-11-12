@@ -57,17 +57,17 @@ public struct Path: Equatable, RawRepresentable {
         self.url = url
     }
     
-    /// Returns the path extension
+    /// Returns the path extension.
     public var `extension`: String {
         return url.pathExtension
     }
     
-    /// Returns the path components
+    /// Returns the path components.
     public var components: [String] {
         return url.pathComponents
     }
     
-    /// Returns the last path component
+    /// Returns the last path component.
     public var lastComponent: String {
         return url.lastPathComponent
     }
@@ -77,17 +77,17 @@ public struct Path: Equatable, RawRepresentable {
         return FileManager.default.componentsToDisplay(forPath: rawValue)
     }
     
-    /// Returns wether a Item exists at self
+    /// Returns wether the path exists.
     public var exists: Bool {
         return FileManager.default.fileExists(atPath: rawValue)
     }
     
-    /// Returns Path with any symlinks resolved
+    /// Returns Path with any symlinks resolved.
     public var resolved: Path {
         return Path(url.resolvingSymlinksInPath())
     }
     
-    /// Return Standardized Path
+    /// Return a standardized Path
     public var standardized: Path {
         return Path(url.standardizedFileURL)
     }

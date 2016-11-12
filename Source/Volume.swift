@@ -41,7 +41,7 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
         self.path = path
     }
     
-    /// Returns mounted volumes
+    /// Returns mounted volumes.
     public static var mounted: [Volume] {        
         guard let volumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [], options: []), volumeURLs.isEmpty == false else {
             return []
@@ -58,7 +58,7 @@ public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
     }
     
     #if os(macOS)
-    /// Unmounts the volume
+    /// Unmounts the volume.
     ///
     /// - parameter options: An array of `FileManager.UnmountOptions` used to unmount the volume.
     /// - parameter completionHandler: The completion handler will be executed when the operation is complete, error will be nil the volume was unmounted.

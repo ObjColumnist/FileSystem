@@ -41,7 +41,7 @@ public struct RegularFile: File, Aliasable, FileHandleConvertible, FileWrapperCo
         self.path = path
     }
     
-    /// Returns the contents of the file in bytes
+    /// Returns the contents of the file in bytes.
     ///
     /// - throws: An `Error`.
     ///

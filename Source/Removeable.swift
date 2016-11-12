@@ -18,6 +18,8 @@ extension Removeable {
     /// Remove the `Item`.
     ///
     /// - note: This function removes the item instantly.
+    ///
+    /// - throws: An `Error`.
     public func remove() throws {
         try FileManager.default.removeItem(at: path.url)
     }
