@@ -10,6 +10,7 @@ import Foundation
 
 /// `Renameable` `protocol` for an `Item` that can be renamed.
 public protocol Renameable: Item {
+    /// Renames the instance of the conforming type to the specified name.
     mutating func rename(to name: String) throws
 }
 

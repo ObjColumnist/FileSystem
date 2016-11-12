@@ -10,6 +10,7 @@ import Foundation
 
 /// `MoveableSubitem` `protocol` for an `Item` that adopts `Moveable` and `Subitem`.
 public protocol MoveableSubitem: Moveable, Subitem {
+    /// Moves the instance of the conforming type into the specified parent.
     mutating func move(into parent: Parent) throws
 }
 

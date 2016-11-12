@@ -10,8 +10,11 @@ import Foundation
 
 /// `Parent` `protocol` for an `Item` that can be a parent of another `Item`.
 public protocol Parent: Item {
+    /// Return the subitems for the instance of the conforming type.
     func subitems() throws -> [Subitem]
+    /// Return if the instance of the conforming type is empty.
     func isEmpty() throws -> Bool
+    /// Return if the instance of the conforming type contains the specified subitem.
     func contains(_ subitem: Subitem) throws -> Bool
 }
 

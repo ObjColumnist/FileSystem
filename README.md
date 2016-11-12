@@ -70,7 +70,7 @@ let path = Path(url)
 ```swift
 public var components: [String]
 public var lastComponent: String
-public var componentsToDisplay: [String]
+public var componentsToDisplay: [String]?
 ```
 
 In addition to creating new paths based on its existing components:

@@ -10,8 +10,11 @@ import Foundation
 
 /// `FileHandleConvertible` `protocol` for an `Item` that can be converted into a `FileHandle` for either reading, writing or updating (both reading and writing).
 public protocol FileHandleConvertible: Item {
+    /// Returns a file handle for reading instantiated with the instance of the conforming type.
     func fileHandleForReading() throws -> FileHandle
+    /// Returns a file handle for writing instantiated with the instance of the conforming type.
     func fileHandleForWriting() throws -> FileHandle
+    /// Returns a file handle for updating instantiated with the instance of the conforming type.
     func fileHandleForUpdating() throws -> FileHandle
 }
 

@@ -42,6 +42,10 @@ public struct RegularFile: File, Aliasable, FileHandleConvertible, FileWrapperCo
     }
     
     /// Returns the contents of the file in bytes
+    ///
+    /// - throws: An `Error`.
+    ///
+    /// - returns: The contents of the file in bytes.
     public func size() throws -> Int {
         let values = try path.url.resourceValues(forKeys: [.fileSizeKey])
         return values.fileSize!

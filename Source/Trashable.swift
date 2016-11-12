@@ -12,6 +12,7 @@ import Foundation
 @available(macOS 10.10, *)
 public protocol Trashable: Item {
     #if os(macOS)
+    /// Trashes the instance of the conforming type.
     mutating func trash() throws
     #endif
 }

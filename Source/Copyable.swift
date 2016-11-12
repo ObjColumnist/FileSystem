@@ -10,6 +10,7 @@ import Foundation
 
 /// `Copyable` `protocol` for an `Item` that can be a copied.
 public protocol Copyable: Item {
+    /// Copies the instance of the conforming type to the specified path, returning the copy.
     func copy(to path: Path) throws -> Self
 }
 

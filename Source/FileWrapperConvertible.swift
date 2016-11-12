@@ -10,6 +10,7 @@ import Foundation
 
 /// `FileWrapperConvertible` `protocol` for an `Item` that can be converted into a `FileWrapper`.
 public protocol FileWrapperConvertible: Item {
+    /// Returns a file wrapper instantiated with the instance of the conforming type.
     func fileWrapper() throws -> FileWrapper
 }
 
@@ -18,7 +19,7 @@ extension FileWrapperConvertible {
     ///
     /// - throws: An `Error`.
     ///
-    /// - returns: A `FileWrapper`
+    /// - returns: A `FileWrapper`.
     public func fileWrapper() throws -> FileWrapper {
         return try FileWrapper(url: path.url, options: [])
     }

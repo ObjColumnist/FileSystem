@@ -10,6 +10,7 @@ import Foundation
 
 /// `CopyableSubitem` `protocol` for an `Item` that adopts `Copyable` and `Subitem`.
 public protocol CopyableSubitem: Copyable, Subitem {
+    /// Copies the instance of the conforming type into the specified parent, returning the copy.
     func copy(into parent: Parent) throws -> Self
 }
 

@@ -10,18 +10,22 @@ import Foundation
 
 /// `Item` is the base `protocol` for all file system items that can be represented by `Path`.
 public protocol Item: PathRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
+    /// The path representing the instance of the conforming type.
     var path: Path { get set }
     
+    /// Instantiates an instance of the conforming type from a path representation without validating the path.
     init(_ path: Path)
 }
 
 extension Item /* CustomStringConvertible*/ {
+    /// A textual representation of this instance, returning the represented path's `rawValue`.
     public var description: String {
         return path.description
     }
 }
 
 extension Item /* CustomDebugStringConvertible */ {
+    /// A textual representation of this instance.
     public var debugDescription: String {
         return "\(type(of: self)) \(path.rawValue)"
     }

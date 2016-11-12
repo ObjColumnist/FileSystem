@@ -10,6 +10,7 @@ import Foundation
 
 /// `Moveable` `protocol` for an `Item` that can be moved to another `Path`.
 public protocol Moveable: Item {
+    /// Moves the instance of the conforming type to the specified path.
     mutating func move(to path: Path) throws
 }
 

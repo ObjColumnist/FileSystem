@@ -10,7 +10,9 @@ import Foundation
 
 /// `Subitem` `protocol` for an `Item` that can be a subitem of another `Item`.
 public protocol Subitem: Item {
+    /// Returns the root volume for the instance of the conforming type.
     func rootVolume() throws -> Volume
+    /// Returns the parent directory for the instance of the conforming type.
     func parentDirectory() throws -> Directory?
 }
 

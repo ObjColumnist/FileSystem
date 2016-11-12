@@ -10,6 +10,7 @@ import Foundation
 
 /// `Renameable` `protocol` for an `Item` that can be removed,..
 public protocol Removeable: Item {
+    /// Removes the instance of the conforming type.
     func remove() throws
 }
 

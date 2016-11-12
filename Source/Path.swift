@@ -72,9 +72,9 @@ public struct Path: Equatable, RawRepresentable {
         return url.lastPathComponent
     }
     
-    /// Returns an array of localized path components
-    public var componentsToDisplay: [String] {
-        return FileManager.default.componentsToDisplay(forPath: rawValue) ?? []
+    /// Returns an array of localized path components or nil if the path does not exist.
+    public var componentsToDisplay: [String]? {
+        return FileManager.default.componentsToDisplay(forPath: rawValue)
     }
     
     /// Returns wether a Item exists at self
@@ -120,28 +120,33 @@ public struct Path: Equatable, RawRepresentable {
 }
 
 extension Path: CustomStringConvertible {
+    /// A textual representation of this instance, returning the `rawValue`.
     public var description: String {
         return rawValue
     }
 }
 
 extension Path: CustomDebugStringConvertible {
+    /// A textual representation of this instance, returning the `rawValue`.
     public var debugDescription: String {
         return rawValue
     }
 }
 
 extension Path: ExpressibleByStringLiteral {
-    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
-        self.rawValue = value
-        self.url = URL(fileURLWithPath: value)
-    }
-    
+    /// Creates an instance initialized to the given string value.
     public init(stringLiteral value: StringLiteralType) {
         self.rawValue = value
         self.url = URL(fileURLWithPath: value)
     }
     
+    /// Creates an instance initialized to the given value.
+    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
+        self.rawValue = value
+        self.url = URL(fileURLWithPath: value)
+    }
+    
+    /// Creates an instance initialized to the given value.
     public init(unicodeScalarLiteral value: StringLiteralType) {
         self.rawValue = value
         self.url = URL(fileURLWithPath: value)
@@ -174,11 +179,13 @@ extension Path {
 }
 
 extension Path: Hashable {
+    /// Return the hash value of the raw value.
     public var hashValue: Int {
         return rawValue.hashValue
     }
 }
 
+/// Returns if the specified paths are equal according to there standardized paths.
 public func ==(lhs: Path, rhs: Path) -> Bool {
     return lhs.url.standardizedFileURL == rhs.url.standardizedFileURL
 }
