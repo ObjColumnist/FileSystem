@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+This version of `FileSystem` was focused on increasing the documentation of protocols.
+
 ## 0.2
 
 This version of `FileSystem` predominately focused on improving the documentation of the code base, in addition to the following changes:
