@@ -10,6 +10,7 @@ import Foundation
 
 /// `Directory` is a `struct` that is used to represent a directory.
 public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, SymbolicLinkable, FileWrapperConvertible {
+    /// The path of the directory.
     public var path: Path
     
     /// Creates a `Directory` instance with the specified path.
@@ -72,7 +73,7 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
         return Directory(Path(applicationUrl))
     }
     
-    /// Returns the Downloads `Directory` in the current users home directory.
+    /// Returns the Application Support Directory in the current users home directory.
     public static var applicationSupport: Directory {
         let applicationSupportUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         return Directory(Path(applicationSupportUrl))

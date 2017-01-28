@@ -10,6 +10,7 @@ import Foundation
 
 /// Path represents a file system location on disk.
 public struct Path: Equatable, RawRepresentable {
+    /// Alias for the underlying raw value of a path.
     public typealias RawValue = String
     
     /// String representation of the path

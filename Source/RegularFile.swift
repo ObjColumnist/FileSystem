@@ -10,6 +10,7 @@ import Foundation
 
 /// `RegularFile` is a `struct` that is used to represent a regular file i.e. not a symlink or alias.
 public struct RegularFile: File, Aliasable, FileHandleConvertible, FileWrapperConvertible {
+    /// The path of the regular file.
     public var path: Path
     
     /// Creates a `RegularFile` instance with the specified path.

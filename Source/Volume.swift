@@ -10,6 +10,7 @@ import Foundation
 
 /// `Volume` is a `struct` that is used to represent a volume.
 public struct Volume: Item, Parent, Renameable, Linkable, SymbolicLinkable {
+    /// The path of the volume.
     public var path: Path
     
     /// Creates a `Volume` instance with the specified path.

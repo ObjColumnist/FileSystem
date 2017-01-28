@@ -10,6 +10,7 @@ import Foundation
 
 /// `SymbolicLink` is a `struct` that is used to represent a symbolic link.
 public struct SymbolicLink: File, FileWrapperConvertible {
+    /// The path of the symbolic link.
     public var path: Path
     
     /// Creates a `SymbolicLink` instance with the specified path.

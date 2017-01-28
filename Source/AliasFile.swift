@@ -10,6 +10,7 @@ import Foundation
 
 /// `AliasFile` is a `struct` that is used to represent an alias.
 public struct AliasFile: File {
+    /// The path of the alias file.
     public var path: Path
     
     /// Creates a `AliasFile` instance with the specified path.
