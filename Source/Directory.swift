@@ -130,8 +130,8 @@ public struct Directory: Item, Parent, Subitem, Copyable, CopyableSubitem, Movea
     /// - throws: An `Error`.
     ///
     /// - returns: A `Directory` or throws an `Error`.
-    public static func create(at path: Path, withIntermediateDirectories: Bool = false, attributes: [String: Any]? = nil) throws -> Directory {
-        try FileManager.default.createDirectory(at: path.url, withIntermediateDirectories: withIntermediateDirectories, attributes: attributes)
+    public static func create(at path: Path, withIntermediateDirectories createIntermediates: Bool = false, attributes: [FileAttributeKey: Any]? = nil) throws -> Directory {
+        try FileManager.default.createDirectory(at: path.url, withIntermediateDirectories: createIntermediates, attributes: attributes)
         return Directory(path)
     }
     

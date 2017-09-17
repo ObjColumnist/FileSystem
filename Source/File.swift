@@ -9,7 +9,7 @@
 import Foundation
 
 /// `File` is the base `protocol` for a single file.
-public protocol File: Item, Subitem, Copyable, CopyableSubitem, Moveable, MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable, Aliasable {}
+public protocol File: /* Item, */ /*Subitem, */ /* Copyable,*/ CopyableSubitem, /*Moveable, */ MoveableSubitem, Renameable, Removeable, Trashable, Linkable, SymbolicLinkable, Aliasable {}
 
 extension File {
     /// Returns wether the contents of the specified files are equal.
