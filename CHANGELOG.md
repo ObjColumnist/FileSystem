@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3
+
+Swift 4 update.
+
 ## 0.2.1
 
 This version of `FileSystem` was focused on increasing the documentation of protocols.
